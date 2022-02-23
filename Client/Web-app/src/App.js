@@ -1,14 +1,28 @@
+// ... PROJECT DEPENDENCIES > START
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+// ... PROJECT DEPENDENCIES > END
 
-import ChatPanel from './components/ChatPanel'
-import LeftPanel from './components/LeftPanel'
-import RightPanel from './components/RightPanel'
 
+// ... CUSTOM ELEMENT DEPENDENCIES > START
+// import ChatSelector from './components/ChatSelector';
+// ... import ChatPanel from './components/ChatPanel'
+// ... import LeftPanel from './components/LeftPanel'
+// ... import RightPanel from './components/RightPanel'
+// ... CUSTOM ELEMENT DEPENDENCIES > END
+
+
+// ... CSS STYLE DEPENDENCIES > START
 import './components/assets/App.css'
-import ChatSelector from './components/ChatSelector';
+// ... CSS STYLE DEPENDENCIES > END
 
+// ...................................................................................
+
+// declaring access point to socket.io server 
 const socket = io.connect("http://localhost:3001");
+
+const GLOBAL_ROOM = "global_room"
+
 
 function App() {
 
@@ -22,11 +36,14 @@ function App() {
 
   useEffect(() => {
 
+    // ... joint client to room / GLOBAL_ROOM for time being
+    socket.emit("join_room", GLOBAL_ROOM)
+
     // ...selectedUser side effect to set roomID
     // ... ... roomID structure user1.concat(user2)
     // ... ... user 1 is the alphabetically sorted first 
     // ... ... ... amoung this.user and selectedUser
-    setRoomID(sortUsers(currentUser, selectedUser))
+    // setRoomID(sortUsers(currentUser, selectedUser))
 
     // ... ...  messageList is updated
     // ... ... ... fetch operation for previous message 
@@ -45,13 +62,15 @@ function App() {
         <ChatPanel socket={socket} roomID={roomID} messageList={messageList}/>
         <RightPanel />
       */}
-      <ChatSelector />
+      {/* 
+        <ChatSelector />
+      */}
     </div>
   )
 }
 
 
-// ... utility functions below
+// ... utility functions
 
 const sortUsers = (user1, user2) => {
 
