@@ -20,7 +20,7 @@ const { Server } = require("socket.io")
 // ... default server port / client runs on port 3000
 const PORT = 3001
 // .....................................................................
-// ... DECLARING DEPENDENCIES > END
+// ... DECLARING DEPENDENCIES > END ...
 
 
 
@@ -56,6 +56,11 @@ io.on("connection", (socket) => {
     socket.on("join_room", (data) => {
         socket.join(data)                       // ... data contains room name passed from client
         console.log(` ... ... user with id: <{${socket.id}}> joined room <"${data}">`)
+    })
+
+    socket.on("send_message", (data) => {
+        console.log(data)
+        socket.to(data.room).emit("receive_message", data)
     })
 
     socket.on("disconnecting", () => {

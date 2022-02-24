@@ -118,7 +118,8 @@
 .csccc-body {
   width: 100%;
   height: 90%;
-  background-color: blue;
+  background-color: white;
+  overflow-y: scroll;
 }
 
 .csccc-input{
@@ -142,6 +143,8 @@
     align-items: center;
     border: 1px solid #DFDFDF;
     border-radius: 4em;
+    position: relative;
+
 }
 
 .cscccib-input-bar{
@@ -152,8 +155,133 @@
     border: none;
 }
 
-.message-container {
+.message-container-left {
   width: 100%;
   min-height: 5em;
-  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.message-body-left{
+    margin-left: 2em;
+    padding: 0.7em 1em;
+    max-width: 40%;
+    border-radius: 2em;
+    border: 1px solid #DFDFDF;
+    color: rgb(155, 153, 153);
+}
+
+.message-container-right{
+    width: 100%;
+    min-height: 5em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.message-body-right{
+    margin-right: 2em;
+    padding: 0.7em 1em;
+    max-width: 40%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2em;
+    color: gray;
+}
+
+.message-image-left{
+    width: 10em;
+    height: 10em;
+}
+
+.message-no-image-left{
+    width:  0;
+    height: 0;
+}
+
+.message-no-image-right{
+    width: 0;
+    height: 0;
+}
+
+.message-image-right{
+    width: 20em;
+    height: 20em;
+    border-radius: 2em;
+    margin-bottom: 2em;
+}
+
+.file-input{
+    background-image: url("https://img.icons8.com/fluency/27/000000/image.png");
+    background-repeat: no-repeat;
+    width: 2em;
+    height: 2em;
+    border: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.file-input-field{
+    z-index: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.scroll-to-bottom{
+    transition: 0.3s ease-out;
+    position: absolute;
+    right: -3em;
+    bottom: 6em;
+
+    border: none;
+    background-color: rgba(0,0,0,0);
+}
+
+.scroll-to-bottom-hover{
+    transition: 0.3s ease-out;
+    position: absolute;
+    right: -3em;
+    bottom: 6em;
+
+    border: none;
+    background-color: rgba(0,0,0,0);
+    animation: scrollToBottomHover 0.4s infinite ease-in;
+
+}
+
+.scroll-to-bottom:hover{
+    border-radius: 2em;
+    background-color: whitesmoke;
+}
+
+.scroll-to-bottom:active{
+    animation: scrollToBottom 0.3s ease-in;
+    background-color: rgba(0,0,0,0);
+}
+
+@keyframes scrollToBottomHover {
+    0%{
+        transform: translateY(0em);
+    }
+    50%{
+        transform: translateY(1em);
+    }
+    100%{
+        transform: translateY(0em);
+    }
+}
+
+@keyframes scrollToBottom {
+    0%{
+        transform: translateY(0em);
+    }
+    50%{
+        transform: translateY(1em);
+    }
+    100%{
+        transform: translateY(0em);
+    }
 }

@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 
 
 // ... CUSTOM ELEMENT DEPENDENCIES > START
-// import ChatSelector from './components/ChatSelector';
+import ChatSelector from './components/ChatSelector';
 // ... import ChatPanel from './components/ChatPanel'
 // ... import LeftPanel from './components/LeftPanel'
 // ... import RightPanel from './components/RightPanel'
@@ -62,9 +62,7 @@ function App() {
         <ChatPanel socket={socket} roomID={roomID} messageList={messageList}/>
         <RightPanel />
       */}
-      {/* 
-        <ChatSelector />
-      */}
+        <ChatSelector socket={socket} room={GLOBAL_ROOM}/>
     </div>
   )
 }

@@ -1,12 +1,23 @@
+// ... PROJECT DEPENDENCIES > START
 import React, { useState } from 'react';
+// ... PROJECT DEPENDENCIES > END
 
-// ... styles imported for set file
+// ... PROJECT STYLE DEPENDENCY > START
 import './assets/styles.css';
+// ... PROJECT STYLE DEPENDENCY > END
+
+
+// ... PROJECT COMPONENT DEPENDENCY > START
 import Chat from './Chat';
+// ... PROJECT COMPONENT DEPENDENCY > END
+
+
+// ..................................................................................................
+
 
 // ... lists out the available chats and redirects to
 // ... the specific chat on being selected
-function ChatSelector() {
+function ChatSelector({ socket, room }) {
 
     // ... contains the list of users available for current 
     // ... user to communicate
@@ -16,6 +27,10 @@ function ChatSelector() {
     // ... negative index indicates no chat index
     const [selectedIndex, setSelectedIndex] = useState(-1);
 
+
+
+
+    // ... TEST DATA ... specifying format
     const cardDets = {
         username: "__recursion_",
         lastText: "Dudeee you awake ? ?",
@@ -25,19 +40,25 @@ function ChatSelector() {
     return (
         <div className='cs-container' >
             <div className='csc-list' >
-                <ChatCard cardDets={cardDets} />
-                <ChatCard cardDets={cardDets} />
-                <ChatCard cardDets={cardDets} />
-                <ChatCard cardDets={cardDets} />
+                {/*
+                    <ChatCard cardDets={cardDets} />
+                    <ChatCard cardDets={cardDets} />
+                    <ChatCard cardDets={cardDets} />
+                    <ChatCard cardDets={cardDets} />
+                */}
             </div>
             <div className='csc-chat'>
-                <Chat />
+                <Chat socket={socket} room={room} />
             </div>
         </div>
     )
 }
 
 
+// .........................................................................................
+
+
+// ...  card displaying data of each user
 const ChatCard = () => {
 
     // ... if its active then bg color is updated
