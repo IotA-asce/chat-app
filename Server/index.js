@@ -19,8 +19,32 @@ const { Server } = require("socket.io")
 
 // ... default server port / client runs on port 3000
 const PORT = 3001
+
+// ... mongoClient connects to the mongodb db using the mongo url
+// ... ... and provides the Framework to perform CRUD operations 
+const MongoDB = require('mongodb');
+const MongoClient = MongoDB.MongoClient;
+
 // .....................................................................
 // ... DECLARING DEPENDENCIES > END ...
+
+
+
+
+
+
+
+
+// .....................................................................
+// ... CONNECTING TO MONGODB DB USING UNIQUE URL > START
+const uri = 'mongodb+srv://oldman:fairbanks@cluster0.zizuq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const client = new MongoClient(uri);
+// ... CONNECTING TO MONGODB DB USING UNIQUE URL > END
+// .....................................................................
+
+
+
+
 
 
 
@@ -34,13 +58,21 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {                                 
-        origin: "http://localhost:3000",    // ... issue [1], client url set for access
+        origin: "http://localhost:3002",    // ... issue [1], client url set for access
         methods: ["GET", "POST"],           // ... methods, requests accepted specified
     }
 })
 
 // ... INITIALIZING VARIABLES FOR SERVER > END ...
 // .....................................................................
+
+
+
+
+
+
+
+
 
 
 
@@ -80,33 +112,45 @@ io.on("connection", (socket) => {
 // .....................................................................
 // SOCKET.IO SERVER WORKFLOW > END ...
 
+
+
+
+
+
+
+
+
+
 // ... Start a server listening for connections.
 server.listen(PORT, () => {
 
-    console.log(`server running at port ${PORT}`);
+    console.log(` >> server running at port \t\t\t\x1b[30m\x1b[43m\x1b[5m ${PORT} \x1b[37m\x1b[40m`);
+    if( client ) console.log(' >> mongo client connected < client username:', "\x1b[30m\x1b[43m" ,'oldman', "\x1b[37m\x1b[40m", ">" )
 
 })
 
+// Reset = "\x1b[0m"
+// Bright = "\x1b[1m"
+// Dim = "\x1b[2m"
+// Underscore = "\x1b[4m"
+// Blink = "\x1b[5m"
+// Reverse = "\x1b[7m"
+// Hidden = "\x1b[8m"
 
+// FgBlack = "\x1b[30m"
+// FgRed = "\x1b[31m"
+// FgGreen = "\x1b[32m"
+// FgYellow = "\x1b[33m"
+// FgBlue = "\x1b[34m"
+// FgMagenta = "\x1b[35m"
+// FgCyan = "\x1b[36m"
+// FgWhite = "\x1b[37m"
 
-
-
-
-
-
-
-
-
-
-
-// io.on("connection", (socket) => {
-//     console.log(`new client with id ${socket.id}`);
-
-//     socket.on("join_room", (data) => {
-//         socket.join(data)
-//     })
-
-//     socket.on("disconnect", () => {
-//         console.log(`client with id: ${socket.id} disconnected`);
-//     })
-// });
+// BgBlack = "\x1b[40m"
+// BgRed = "\x1b[41m"
+// BgGreen = "\x1b[42m"
+// BgYellow = "\x1b[43m"
+// BgBlue = "\x1b[44m"
+// BgMagenta = "\x1b[45m"
+// BgCyan = "\x1b[46m"
+// BgWhite = "\x1b[47m"

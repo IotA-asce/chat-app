@@ -11,14 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.2",
-    "nodemon": "^2.0.15",
-    "socket.io": "^4.4.1",
     "@react-three/drei": "4.1.8",
     "@react-three/fiber": "6.0.14",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.4",
+    "nodemon": "^2.0.15",
     "simplex-noise": "2.4.0",
+    "socket.io": "^4.4.1",
     "three": "0.127.0"
-
   }
 }

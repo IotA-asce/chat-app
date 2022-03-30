@@ -40,8 +40,8 @@ function ChatSelector({ socket, room }) {
     return (
         <div className='cs-container' >
             <div className='csc-list' >
+            <ChatCard cardDets={cardDets} />
                 {/*
-                    <ChatCard cardDets={cardDets} />
                     <ChatCard cardDets={cardDets} />
                     <ChatCard cardDets={cardDets} />
                     <ChatCard cardDets={cardDets} />
